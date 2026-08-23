@@ -1,14 +1,23 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { ConexaoBancoMongo } from './config/db';
+import { ClienteRoutes } from './routes/cliente.routes';
 
 dotenv.config()
 
 const app: Express = express();
-const PORTA = 8080;
+const PORTA = process.env.PORTA ?? 8080;
 const stringConexao = process.env.STRING as string;
 
-app.get('/health', (req: Request, res: Response) => res.status(200).send({body: 'Health'}));
+const baseRecursos = '/api/v1';
+
+app.use(express.json());
+app.get(`${baseRecursos}/health`, (req: Request, res: Response) => res.status(200).send({body: 'Health'}));
+
+// Rotas
+const clienteRoutes = new ClienteRoutes();
+app.use(`${baseRecursos}/clientes`, clienteRoutes.getRouter());
+
 
 app.listen(PORTA, async () => {
     const conexaoBancoMongo = new ConexaoBancoMongo(stringConexao);
