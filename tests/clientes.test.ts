@@ -5,7 +5,7 @@ describe('Testes para o cliente', () => {
         
         const dataMock = {
             nome: 'Matheus',
-            email: 'mz@gmail.com',
+            email: 'mz1@gmail.com',
             senha: '123456'
         }
     

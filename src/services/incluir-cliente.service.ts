@@ -1,6 +1,6 @@
 import { IncluirClienteDTO } from '../dtos/cliente.dto';
 import { ClienteRepositories } from '../repositories/cliente.repositories';
-import bcrypt from 'bcrypt';
+import { hashSenha } from '../utils/hash-senha';
 
 export class IncluirClienteService {
     
@@ -15,9 +15,7 @@ export class IncluirClienteService {
             throw new Error('Este usuário já existe');
         }
         
-        const saltRounds = 10;
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hash = await bcrypt.hash(data.senha, salt);
+        const hash = await hashSenha(data.senha);
         data.senha = hash;
 
         const dataEnvio = {

@@ -1,4 +1,3 @@
-import { IncluirClienteDTO } from '../dtos/cliente.dto';
 import { Clientes } from '../models/cliente';
 import { typeCliente } from '../types/cliente';
 
