@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
 import { ClienteRepositories } from '../repositories/cliente.repositories';
+import { IncluirClienteService } from '../services/incluir-cliente.service';
 
 export class ClienteControllers {
     
     constructor(
+        private readonly incluirClienteService: IncluirClienteService,
         private readonly clienteRepo: ClienteRepositories
     ){}
 
@@ -17,7 +19,7 @@ export class ClienteControllers {
                 return res.status(422).send({ body: 'Preencha todos os campos' });
             }
             
-            const resposta = await this.clienteRepo.incluirCliente(data);
+            const resposta = await this.incluirClienteService.incluirCliente(data);
 
             return res.status(201).send({ body: 'Usuário cadastrado', data: resposta });
         } catch (err: any) {

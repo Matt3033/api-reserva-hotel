@@ -18,8 +18,8 @@ describe('Testes para o cliente', () => {
         })
         const resultado = await res.json();
 
-        expect(res.status).toBe(201);
         expect(resultado.body).toBe('Usuário cadastrado');
+        expect(res.status).toBe(201);
         expect(resultado.data.nome).toBe(dataMock.nome);
         expect(resultado.data.email).toBe(dataMock.email);
     })
