@@ -9,14 +9,14 @@ const app: Express = express();
 const PORTA = process.env.PORTA ?? 8080;
 const stringConexao = process.env.STRING as string;
 
-const baseRecursos = '/api/v1';
+const baseEndpoints = '/api/v1';
 
 app.use(express.json());
-app.get(`${baseRecursos}/health`, (req: Request, res: Response) => res.status(200).send({body: 'Health'}));
+app.get(`${baseEndpoints}/health`, (req: Request, res: Response) => res.status(200).send({body: 'Health'}));
 
 // Rotas
 const clienteRoutes = new ClienteRoutes();
-app.use(`${baseRecursos}/clientes`, clienteRoutes.getRouter());
+app.use(`${baseEndpoints}/clientes`, clienteRoutes.getRouter());
 
 
 app.listen(PORTA, async () => {
