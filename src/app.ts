@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { ConexaoBancoMongo } from './config/db';
 import { ClienteRoutes } from './routes/cliente.routes';
+import { HotelRoutes } from './routes/hotel.routes';
 
 dotenv.config()
 
@@ -17,6 +18,9 @@ app.get(`${baseEndpoints}/health`, (req: Request, res: Response) => res.status(2
 // Rotas
 const clienteRoutes = new ClienteRoutes();
 app.use(`${baseEndpoints}/clientes`, clienteRoutes.getRouter());
+
+const hotelRoutes = new HotelRoutes();
+app.use(`${baseEndpoints}/hoteis`, hotelRoutes.getRouter());
 
 
 app.listen(PORTA, async () => {
