@@ -11,9 +11,7 @@ export class ClienteRoutes {
     constructor() {
         this.router = Router();
         this.clienteCtrl = new ClienteControllers(
-            new ClienteService(new ClienteRepositories()), 
-            new ClienteRepositories()
-        );
+            new ClienteService(new ClienteRepositories()));
         this.post();
     }
 

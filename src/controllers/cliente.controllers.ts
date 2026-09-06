@@ -1,12 +1,10 @@
 import { Request, Response } from 'express';
-import { ClienteRepositories } from '../repositories/cliente.repositories';
 import { ClienteService } from '../services/cliente.service';
-// dto para retorno apenas e colocar todos os dados a serem enviados no controller
+
 export class ClienteControllers {
     
     constructor(
         private readonly clienteService: ClienteService,
-        private readonly clienteRepo: ClienteRepositories
     ){}
 
     public async incluirCliente(req: Request, res: Response): Promise<Response> {
