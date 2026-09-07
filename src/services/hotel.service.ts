@@ -1,6 +1,7 @@
 import { IncluirHotelDTO } from '../dtos/hotel.dto';
 import { HotelRepositories } from '../repositories/hotel.repositories';
 import { hashSenha } from '../utils/hash-senha';
+import { BuscarUsuarioPorEmailService } from './buscar-usuario-email.service';
 
 export class HotelService {
 
@@ -9,8 +10,11 @@ export class HotelService {
     ) { }
 
     public async incluirHotel(data: IncluirHotelDTO) {
-        const hotelExiste = await this.hotelRepo.buscarHotelPorAtributo({ email: data.email });
-        if (hotelExiste) throw new Error('Este usuário já existe');
+
+        const buscarUsuarioEmail = new BuscarUsuarioPorEmailService();
+        const usuarioExiste = await buscarUsuarioEmail.buscar(data.email);
+
+        if (usuarioExiste) throw new Error('Este usuário já existe');
 
         const hash = await hashSenha(data.senha);
         data.senha = hash;
@@ -22,7 +26,7 @@ export class HotelService {
             refreshToken: { idRefreshToken: '', expiresIn: 0 }
         }
 
-        const resposta = await this.hotelRepo.incluirHotel(dataEnvio);
-        return resposta; 
+        const resposta = await this.hotelRepo.incluir(dataEnvio);
+        return resposta;
     }
 }
