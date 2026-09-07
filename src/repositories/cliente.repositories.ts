@@ -1,9 +1,10 @@
 import { Clientes } from '../models/cliente';
 import { typeCliente } from '../types/cliente';
+import { IUsuarioRepository } from './interfaces/usuario-repository';
 
-export class ClienteRepositories {
+export class ClienteRepositories implements IUsuarioRepository<typeCliente> {
     
-    public async incluirCliente(data: typeCliente) {
+    public async incluir(data: typeCliente): Promise<{ nome: string, email: string }> {
         try {
             const cliente = new Clientes(data);
             const res = await cliente.save();
@@ -15,14 +16,19 @@ export class ClienteRepositories {
         }
     }
 
-    public async buscarClientePorAtributo(atributos: Partial<typeCliente>) {
+    public async buscarPorAtributo(atributos: Partial<typeCliente>): Promise<{ nome: string, email: string, senha: string } | false> {
         try {
             const cliente = await Clientes.findOne(atributos);
             
             if (!cliente) {
                 return false;
             }
-            return cliente;
+
+            return { 
+                nome: cliente.nome, 
+                email: cliente.email, 
+                senha: cliente.senha 
+            };
 
         } catch (err: any) {
             throw new Error(err.message);
