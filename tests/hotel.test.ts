@@ -5,10 +5,10 @@ describe('Rotas hotel', () => {
         const baseURL = 'http://localhost:8080/api/v1';
 
         const dataMock = {
-            nome: 'Hotel laranjas',
-            email: 'h10@gmail.com',
+            nome: 'Hotel Rosas',
+            email: 'h12@gmail.com',
             senha: '12345',
-            endereco: 'Jd. Laranjas, rua 122, SP, SP',
+            endereco: 'Jd. Rosas, rua 122, SP, SP',
         }
 
         const res = await fetch(baseURL + '/hoteis', {
