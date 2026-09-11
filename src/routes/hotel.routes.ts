@@ -2,6 +2,7 @@ import { Request, Response, Router } from 'express';
 import { HotelControllers } from '../controllers/hotel.controllers';
 import { HotelService } from '../services/hotel.service';
 import { HotelRepositories } from '../repositories/hotel.repositories';
+import { ClienteRepositories } from '../repositories/cliente.repositories';
 
 export class HotelRoutes {
     
@@ -11,7 +12,10 @@ export class HotelRoutes {
     constructor(){
         this.router = Router();
         this.hotelCtrl = new HotelControllers(
-            new HotelService(new HotelRepositories)
+            new HotelService(
+                new HotelRepositories(), 
+                new ClienteRepositories()
+            )
         );
         this.post();
     }
