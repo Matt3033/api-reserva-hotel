@@ -6,10 +6,8 @@ const schema = new Schema({
     senha: { type: String, required: true },
     endereco: { type: String, required: true },
     avaliacaoMedia: { type: Number },
-    fotoPerfil: { type: String },
+    fotoPerfil: { type: Buffer },
     refreshToken: { type: { idRefreshToken: String, expiresIn: Number }, _id: false }
 })
 
-const Hotel = model('Hoteis', schema);
-
-export default Hotel;
+export const Hoteis = model('Hoteis', schema);

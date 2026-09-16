@@ -4,7 +4,7 @@ const schema = new Schema({
     nome: { type: String, required: true },
     email: { type: String, required: true },
     senha: { type: String, required: true },
-    fotoPerfil: { type: String },
+    fotoPerfil: { type: Buffer },
     refreshToken: { type: { idRefreshToken: String, expiresIn: Number }, _id: false }
 })
 

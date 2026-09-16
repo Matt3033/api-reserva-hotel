@@ -5,15 +5,15 @@ import { HotelRepositories } from '../repositories/hotel.repositories';
 import { ClienteRepositories } from '../repositories/cliente.repositories';
 
 export class HotelRoutes {
-    
+
     private router: Router;
     private hotelCtrl: HotelControllers;
 
-    constructor(){
+    constructor() {
         this.router = Router();
         this.hotelCtrl = new HotelControllers(
             new HotelService(
-                new HotelRepositories(), 
+                new HotelRepositories(),
                 new ClienteRepositories()
             )
         );
@@ -24,7 +24,7 @@ export class HotelRoutes {
         return this.router;
     }
 
-    public post(): void {
+    private post(): void {
         this.router.post('/', async (req: Request, res: Response) => await this.hotelCtrl.incluirHotel(req, res));
     }
 }
