@@ -3,7 +3,7 @@ export type typeQuarto = {
     nome: string;
     preco: string;
     descricao: string;
-    fotos: Buffer[];
+    fotos: string[];
     qtdeHospedes: string;
     ocupado: boolean
 }

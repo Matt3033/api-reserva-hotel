@@ -6,7 +6,7 @@ const schema = new Schema({
     senha: { type: String, required: true },
     endereco: { type: String, required: true },
     avaliacaoMedia: { type: Number },
-    fotoPerfil: { type: Buffer },
+    fotoPerfil: { type: String },
     refreshToken: { type: { idRefreshToken: String, expiresIn: Number }, _id: false }
 })
 
