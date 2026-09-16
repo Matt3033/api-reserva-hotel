@@ -4,7 +4,7 @@ import { IUsuarioRepository } from './interfaces/usuario-repository';
 
 export class HotelRepositories implements IUsuarioRepository<typeHotel> {
 
-    public async incluir(data: typeHotel): Promise<{ nome: string, email: string }>{
+    public async incluir(data: typeHotel): Promise<{ nome: string, email: string }> {
         try {
             const hotel = new Hoteis(data);
             const res = await hotel.save();
@@ -15,17 +15,16 @@ export class HotelRepositories implements IUsuarioRepository<typeHotel> {
         }
     }
 
-    public async buscarPorAtributo(data: Partial<typeHotel>): Promise<{ nome: string, email: string, senha: string } | false> {
+    public async buscarPorAtributo(data: Partial<typeHotel>): Promise<{ nome: string, email: string } | false> {
         try {
             const hotel = await Hoteis.findOne(data);
 
             if (!hotel) {
                 return false;
             }
-            return { 
-                nome: hotel.nome, 
-                email: hotel.email, 
-                senha: hotel.senha 
+            return {
+                nome: hotel.nome,
+                email: hotel.email,
             };
 
         } catch (err: any) {
