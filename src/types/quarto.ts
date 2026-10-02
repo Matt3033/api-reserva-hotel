@@ -1,9 +1,12 @@
+import { ObjectId } from 'mongoose';
+
 export type typeQuarto = {
-    idHotel: string;
+    _id: ObjectId,
+    idHotel: ObjectId;
     nome: string;
-    preco: string;
+    preco: number;
     descricao: string;
     fotos: string[];
-    qtdeHospedes: string;
+    qtdeHospedes: number;
     ocupado: boolean
 }
