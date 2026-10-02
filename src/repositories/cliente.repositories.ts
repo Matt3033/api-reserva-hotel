@@ -2,9 +2,14 @@ import { Clientes } from '../models/cliente';
 import { typeCliente } from '../types/cliente';
 import { IUsuarioRepository } from './interfaces/usuario-repository';
 
+type typeRetornoSimples = {
+    nome: string,
+    email: string
+}
+
 export class ClienteRepositories implements IUsuarioRepository<typeCliente> {
 
-    public async incluir(data: typeCliente): Promise<{ nome: string, email: string }> {
+    public async incluir(data: Omit<typeCliente, '_id'>): Promise<typeRetornoSimples> {
         try {
             const cliente = new Clientes(data);
             const res = await cliente.save();
@@ -16,7 +21,7 @@ export class ClienteRepositories implements IUsuarioRepository<typeCliente> {
         }
     }
 
-    public async buscarPorAtributo(atributos: Partial<typeCliente>): Promise<{ nome: string, email: string } | false> {
+    public async buscarPorAtributo(atributos: Partial<typeCliente>): Promise<typeRetornoSimples | false> {
         try {
             const cliente = await Clientes.findOne(atributos);
 

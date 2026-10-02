@@ -2,9 +2,14 @@ import { Hoteis } from '../models/hotel';
 import { typeHotel } from '../types/hotel';
 import { IUsuarioRepository } from './interfaces/usuario-repository';
 
+type typeRetornoSimples = {
+    nome: string,
+    email: string
+}
+
 export class HotelRepositories implements IUsuarioRepository<typeHotel> {
 
-    public async incluir(data: typeHotel): Promise<{ nome: string, email: string }> {
+    public async incluir(data: Omit<typeHotel, '_id'>): Promise<typeRetornoSimples> {
         try {
             const hotel = new Hoteis(data);
             const res = await hotel.save();
@@ -15,7 +20,7 @@ export class HotelRepositories implements IUsuarioRepository<typeHotel> {
         }
     }
 
-    public async buscarPorAtributo(data: Partial<typeHotel>): Promise<{ nome: string, email: string } | false> {
+    public async buscarPorAtributo(data: Partial<typeHotel>): Promise<typeRetornoSimples | false> {
         try {
             const hotel = await Hoteis.findOne(data);
 
