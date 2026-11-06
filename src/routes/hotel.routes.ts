@@ -13,8 +13,8 @@ export class HotelRoutes {
         this.router = Router();
         this.hotelCtrl = new HotelControllers(
             new HotelService(
-                new HotelRepositories(),
-                new ClienteRepositories()
+                new ClienteRepositories(),
+                new HotelRepositories()
             )
         );
         this.post();
