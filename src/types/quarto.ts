@@ -1,8 +1,8 @@
-import { ObjectId } from 'mongoose';
+import { Types } from 'mongoose';
 
 export type typeQuarto = {
-    _id: ObjectId,
-    idHotel: ObjectId;
+    _id: Types.ObjectId;
+    idHotel: Types.ObjectId;
     nome: string;
     preco: number;
     descricao: string;

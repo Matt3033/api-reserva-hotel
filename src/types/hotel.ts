@@ -1,7 +1,7 @@
-import { ObjectId } from 'mongoose';
+import { Types } from 'mongoose';
 
 export type typeHotel = {
-    _id: ObjectId,
+    _id: Types.ObjectId,
     nome: string,
     email: string,
     senha: string,
