@@ -5,6 +5,7 @@ describe('Rotas cliente', () => {
     
     test('Cadastrar cliente (endpoint POST /clientes)', async () => {
         
+        
         const dataMock = {
             nome: 'João',
             email: 'j12@gmail.com',

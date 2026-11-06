@@ -4,6 +4,7 @@ import { ConexaoBancoMongo } from './config/db';
 import { ClienteRoutes } from './routes/cliente.routes';
 import { HotelRoutes } from './routes/hotel.routes';
 import { QuartoRoutes } from './routes/quarto.routes';
+import { ReservaRoutes } from './routes/reserva.routes';
 
 dotenv.config()
 
@@ -25,6 +26,9 @@ app.use(`${baseEndpoints}/hoteis`, hotelRoutes.getRouter());
 
 const quartoRoutes = new QuartoRoutes();
 app.use(`${baseEndpoints}/quartos`, quartoRoutes.getRouter());
+
+const reservaRoutes = new ReservaRoutes();
+app.use(`${baseEndpoints}/reservas`, reservaRoutes.getRouter());
 
 app.listen(PORTA, async () => {
     const conexaoBancoMongo = new ConexaoBancoMongo(stringConexao);

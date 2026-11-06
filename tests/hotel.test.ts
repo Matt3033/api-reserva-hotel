@@ -1,8 +1,9 @@
 describe('Rotas hotel', () => {
+    
+    const baseURL = 'http://localhost:8080/api/v1';
 
     test('Cadastrar hotel (endpoint POST /hoteis)', async () => {
 
-        const baseURL = 'http://localhost:8080/api/v1';
 
         const dataMock = {
             nome: 'Hotel Rosas',
