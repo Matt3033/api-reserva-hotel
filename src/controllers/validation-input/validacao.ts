@@ -8,7 +8,7 @@ export abstract class Validacao {
         this.erros = [];
     }
 
-    public abstract validar(): { [key: string]: string[] }[] | false;
+    public abstract validar(): { [key: string]: string[] }[];
 
     protected camposObrigatoriosVazios(): string[] {
         const camposVazios: string[] = [];
