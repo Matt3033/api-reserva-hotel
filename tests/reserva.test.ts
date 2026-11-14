@@ -1,8 +1,8 @@
-describe('Teste para verificar a classe ReservaService', () => {
+describe('Rotas reserva', () => {
     
     const baseURL = 'http://localhost:8080/api/v1';
     
-    test('Deve retornar: idCliente, idQuarto, dataCheckin e custoTotal', async () => {
+    test('Deve retornar: idCliente, idQuarto, dataCheckin e custoTotal (endpoint POST /reservas', async () => {
         
         const dataCheckin = new Date('12-23-2026');
         const dataCheckout = new Date('12-27-2026');
@@ -31,7 +31,7 @@ describe('Teste para verificar a classe ReservaService', () => {
         expect(json.data.custoTotal).toBe(dataMock.custoTotal);
     })
 
-    test('Deve retornar o erro: O checkout deve ser feito em uma data posterior ao checkin', async () => {
+    test('Deve retornar o erro: O checkout deve ser feito em uma data posterior ao checkin (endpoint POST /hoteis', async () => {
         
         const dataCheckin = new Date('12-27-2026');
         const dataCheckout = new Date('12-23-2026');
